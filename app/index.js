@@ -8,6 +8,7 @@ import InfiniteScrolling from "../screens/InfiniteScrolling";
 import CancelSlowApi from "../screens/CancelSlowApi";
 import StopWatch from "../screens/StopWatch";
 import ChattingAppWebsockets from "../screens/ChattingAppWebsockets";
+import ToDoList from "../screens/ToDoList";
 
 const Stack = createStackNavigator()
 
@@ -70,7 +71,9 @@ const App = () => {
                           options={{headerShown: false}}></Stack.Screen>
             <Stack.Screen name={"/StopWatch"} component={StopWatch}
                           options={{headerShown: false}}></Stack.Screen>
-            <Stack.Screen name={"/"} component={ChattingAppWebsockets}
+            <Stack.Screen name={"/ChattingAppWebsockets"} component={ChattingAppWebsockets}
+                          options={{headerShown: false}}></Stack.Screen>
+            <Stack.Screen name={"/"} component={ToDoList}
                           options={{headerShown: false}}></Stack.Screen>
         </Stack.Navigator>
     )
