@@ -9,25 +9,32 @@ const ToDoList = () => {
     const [newInputContent, setNewInputContent] = useState("");
     const inputRef = useRef();
 
-    useEffect(async () => {
-        try {
-            const value = await AsyncStorage.getItem('todoList');
-            if(value?.length >0){
-                setListsData(value)
+    useEffect(() => {
+        const getStorageItem = async () => {
+            try {
+                const value = await AsyncStorage.getItem('todoList');
+                if (value?.length > 0) {
+                    setListsData(JSON.parse(value))
+                }
+            } catch (e) {
+                console.log("Error in setting the data in async storage memory")
             }
-        } catch (e) {
-            console.log("Error in setting the data in async storage memory")
         }
+        getStorageItem();
     }, [])
-    const updateMemory = (async () => {
-        try {
-            await AsyncStorage.setItem('todoList', JSON.stringify(listsData));
-        } catch (e) {
-            console.log("Error in setting the data in async storage memory")
-        } finally {
-            console.log("async storage updated successfully")
+
+    useEffect(() => {
+        const updateMemory = async () => {
+            try {
+                 await AsyncStorage.setItem('todoList', JSON.stringify(listsData));
+            } catch (e) {
+                console.log("Error in setting the data in async storage memory")
+            } finally {
+                console.log("async storage updated successfully")
+            }
         }
-    })
+        updateMemory()
+    }, [listsData])
 
     useEffect(() => {
         if (newInputTodoVIsible) {
@@ -39,13 +46,9 @@ const ToDoList = () => {
         setListsData(listsData.filter((item) => {
             return item.id !== id
         }));
-        await updateMemory().then(r => console.log("updated data", r))
     }
-    const upDateList = (data, currInput) => {
-        let tempData = listsData.filter((item) => item.id !== data.id)
-        tempData.push({value: currInput, id: data.id})
-        setListsData(tempData)
-        updateMemory().then(r => console.log("updated data",r))
+    const upDateList = async (data, currInput) => {
+        setListsData((prev) => [...prev, {value: currInput, id: data.id}])
     }
     return (
         <View style={styles.container}>
@@ -57,9 +60,8 @@ const ToDoList = () => {
                 <TextInput style={styles.input} ref={inputRef} onChangeText={(data) => {
                     setNewInputContent(data)
                 }} onBlur={() => {
-                    setListsData((prev) => [...prev,{value:newInputContent,id:Date.now().toString()}])
+                    setListsData((prev) => [...prev, {value: newInputContent, id: Date.now().toString()}])
                     setNewInputTodoVisible(false);
-                    updateMemory().then(r => console.log("updated data",r))
                 }}/>
             }
             <FlatList data={listsData} renderItem={({item}) => {
