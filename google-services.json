@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "482435687147",
+    "project_id": "notifications-1e656",
+    "storage_bucket": "notifications-1e656.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482435687147:android:4e51a0b9f69c1bf1a114ae",
+        "android_client_info": {
+          "package_name": "com.anonymous.NasaImageGallary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfqJkzjGBj5KNxFoTaIGVBVDygbrp-NSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

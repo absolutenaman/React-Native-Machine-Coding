@@ -9,6 +9,7 @@ import CancelSlowApi from "../screens/CancelSlowApi";
 import StopWatch from "../screens/StopWatch";
 import ChattingAppWebsockets from "../screens/ChattingAppWebsockets";
 import ToDoList from "../screens/ToDoList";
+import PushNotifications from "../screens/PushNotifications";
 
 const Stack = createStackNavigator()
 
@@ -73,7 +74,9 @@ const App = () => {
                           options={{headerShown: false}}></Stack.Screen>
             <Stack.Screen name={"/ChattingAppWebsockets"} component={ChattingAppWebsockets}
                           options={{headerShown: false}}></Stack.Screen>
-            <Stack.Screen name={"/"} component={ToDoList}
+            <Stack.Screen name={"/ToDoList"} component={ToDoList}
+                          options={{headerShown: false}}></Stack.Screen>
+            <Stack.Screen name={"/"} component={PushNotifications}
                           options={{headerShown: false}}></Stack.Screen>
         </Stack.Navigator>
     )

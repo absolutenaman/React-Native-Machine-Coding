@@ -38,7 +38,5 @@ yarn-error.*
 
 app-example
 
-google-services.json
 /ios
 /android
-notifications-1e656-firebase-adminsdk-fbsvc-5d9a39c2d7.json
