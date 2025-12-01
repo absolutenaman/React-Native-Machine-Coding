@@ -23,7 +23,7 @@
     "arm_fpu": "neon",
     "asan": 0,
     "clang": 1,
-    "coverage": "false",
+    "coverage": "true",
     "dcheck_always_on": 0,
     "debug_nghttp2": "false",
     "debug_node": "false",
